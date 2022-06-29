@@ -1,0 +1,509 @@
+/*
+  ========================================
+  COLORS
+  ========================================
+*/ 
+:root {
+    --color-white: #FFFFFF;
+    --color-black: #1F2937;
+    --color-dark-black: #1C1C1C;
+    --color-light-red: rgba(255, 168, 168, 0.8);
+
+    --color-btn-bg: #ff8787;
+    --color-btn-shadow: #e03131;
+
+    --color-pre-claim-bg: #ffa8a8;
+    --color-pre-claim-shadow: #ff6b6b;
+
+    --color-sweet-ketchup: #ff6b6b;
+    --color-spicy-ketchup: #c92a2a;
+    --color-sweet-spicy-ketchup: #f03e3e;
+}
+
+/*
+  ========================================
+  GENERIC SITE STYLES
+  ========================================
+*/
+html {
+    box-sizing: border-box;
+} 
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+body {
+    background-color: var(--color-dark-black);
+    margin: 0 auto;
+    padding: 0;
+    max-width: 520px;
+
+    text-align: center;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+.body-container {
+    margin-left: 25px;
+    margin-right: 25px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;   
+}
+
+
+/*
+  ========================================
+  TYPOGRAPHY
+  ========================================
+*/
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-white);
+}
+h1, 
+h2,
+h3,
+p,
+a {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-weight: 800;
+    font-size: 1.70rem;
+}
+h2 {
+    font-weight: 800;
+    font-size: 1.50rem;
+    border-left: 5px solid var(--color-btn-bg);
+    padding-left: 7px;
+}
+h3 {
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+p {
+    font-weight: 300;
+    font-size: 1rem;
+}
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+.plusminus .time {
+    font-family: monospace;
+}
+
+/*
+  ========================================
+  SECTIONS SIZING
+  ========================================
+*/
+.timer-sec,
+#tomato-sec,
+.ketchup-factory,
+.ketchup-storage-sec {
+    width: 260px;
+}
+@media (min-width: 600px){
+    body {
+        max-width: 620px;
+    }
+    .body-container {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 50% 50%;
+
+        gap: 15px;
+
+        justify-content: normal;
+    }
+    .timer-sec,
+    .ketchup-factory {
+        grid-row: 1/ span 1;
+    }
+    .tomato-sec,
+    .ketchup-storage-sec {
+        grid-row: 2/ span 1;
+    }
+    .footer {
+        grid-row: 3/ span 1;
+        grid-column: 1/span 2;
+    }
+    #timer-sec,
+    #ketchup-factory {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    #tomato-sec,
+    #ketchup-storage-sec {
+        margin-bottom: 30px;
+    }
+    #footer {
+        margin-top: 0;
+    }
+    .ketchup-factory h2 {
+        margin-top:  20px;
+    }
+}
+
+
+/*
+  ========================================
+  BUTTONS
+  ========================================
+*/
+button,
+#play-btn,
+#pause-btn,
+#restart-btn {
+    cursor: pointer;
+}
+
+#sweet-btn,
+#spicy-btn,
+#sweet-spicy-btn,
+.claim-btn {
+    color: var(--color-white);
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: var(--color-btn-bg);
+    box-shadow: 0 5px var(--color-btn-shadow);
+}
+#claim-btn {
+    width: 130px;
+    height: 48px;
+}
+#sweet-btn:hover,
+#spicy-btn:hover,
+#sweet-spicy-btn:hover,
+#claim-btn:hover {
+    box-shadow: 0 3px var(--color-btn-shadow);
+    top: 1px;
+}
+#sweet-btn:active,
+#spicy-btn:active,
+#sweet-spicy-btn:active,
+#claim-btn:active {
+    box-shadow: 0 0 var(--color-btn-shadow);
+    top: 5px;
+}
+
+/*
+  ========================================
+  TIMER SECTION
+  ========================================
+*/
+.project-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 5px solid var(--color-btn-bg);
+}
+.project-intro {
+    margin-bottom: 20px;
+}
+.timer-sec {
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+.timer-sec #minus-btn,
+.timer-sec #plus-btn {
+    width: 40px;
+    font-size: 2rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    border-radius: 4px;
+}
+.play-pause-res-sec {
+    flex-basis: 100%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+}
+.timer-sec #play-btn,
+.timer-sec #pause-btn,
+.timer-sec #restart-btn {
+    font-size: 2rem;
+    color: var(--color-white);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+.plusminus {
+    flex-basis: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+.plusminus .time {
+    margin: 0 20px 0 20px;
+    width: 120px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+
+    font-size: 2.25rem;
+    font-weight: 600;
+}
+.harvest-container {
+    flex-basis: 100%;
+}
+.harvest-container .harvest-msg {
+    margin-bottom: 15px;
+}
+
+/*
+  ========================================
+  TOMATO STORAGE
+  ========================================
+*/
+.tomato-sec {
+    margin-bottom: 30px;
+}
+#tomato-storage {
+    background: var(--color-black);
+    border-radius: 10px;
+    min-height: 50px;
+    margin: 10px auto;
+    padding: 8px;
+}
+.tomato-sec h2 {
+    text-align: left;
+    margin: 0px auto;
+}
+#tomato-storage-list {
+    margin: 0;
+    padding: 0;
+    height: 65px;
+
+    overflow-y: auto;
+}
+#tomato-storage-list li {
+    display: inline-block;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+/*
+  ========================================
+  KETCHUP FACTORY
+  ========================================
+*/
+.ketchup-factory {
+    margin-bottom: 30px;
+}
+.ketchup-factory h2 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+#possible-ketchups {
+    margin-bottom: 20px;
+}
+.ketchup-factory-container {
+    width: 260px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+.sweet-input-sec,
+.spicy-input-sec,
+.sweet-spicy-input-sec {
+    flex-basis: 260px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+.plus-minus-ketchup-container {
+    width: 130px;
+}
+#sweet-input,
+#spicy-input,
+#sweet-spicy-input {
+    width: 103px;
+    background-color: var(--color-black);
+    border-radius: 2px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+#minus-sweet-ketchup-btn,
+#plus-sweet-ketchup-btn,
+#minus-spicy-ketchup-btn,
+#plus-spicy-ketchup-btn,
+#minus-sweet-spicy-ketchup-btn,
+#plus-sweet-spicy-ketchup-btn {
+    width: 50px;
+    font-size: 1rem;
+}
+#sweet-btn,
+#spicy-btn,
+#sweet-spicy-btn {
+    width: 130px;
+    height: 48px;
+}
+
+.ketchup-factory-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+
+    border: 1px solid var(--color-black);
+    border-radius: 3px;
+
+    color: var(--color-white);
+    background-color: var(--color-black);
+}
+
+/*
+  ========================================
+  KETCHUP STORAGE
+  ========================================
+*/
+.ketchup-storage-sec h2 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+.ketchup-storage {
+    width: 260px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 12px;
+}
+.sweet-sec,
+.spicy-sec,
+.sweet-spicy-sec {
+    flex-basis: 30%;
+}
+#sweet-storage,
+#spicy-storage,
+#sweet-spicy-storage {
+    height: 82px;
+    padding: 8px;
+    margin-bottom: 10px;
+
+    background: var(--color-black);
+    border-radius: 10px;
+}
+.ketchup-storage h3 {
+    margin-bottom: 5px;
+    font-size: 0.71rem;
+}
+#sweet-storage-list,
+#spicy-storage-list,
+#sweet-spicy-storage-list {
+    margin: 0;
+    padding: 0;
+    height: 57px;
+
+    overflow-y: auto;
+}
+#sweet-storage-list li,
+#spicy-storage-list li,
+#sweet-spicy-storage-list li {
+    display: inline-block;
+}
+
+#total-sweet i {
+    color: var(--color-sweet-ketchup);
+}
+#total-spicy i {
+    color: var(--color-spicy-ketchup);
+}
+#total-sweet-spicy i {
+    color: var(--color-sweet-spicy-ketchup);
+}
+
+/*
+  ========================================
+  FOOTER
+  ========================================
+*/
+.footer {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.footer,
+.socials {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.socials-list {
+    flex-basis: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+.socials-list a {
+    font-size: 2rem;
+}
+.socials-list a i:hover,
+.socials-list a img:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.footer p {
+    margin-top: 10px;
+    flex-basis: 100%;
+}
+.footer img {
+    width: 27px;
+}
